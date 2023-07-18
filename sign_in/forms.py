@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from sign_in.models import Student, Logs, Bathroom
+from sign_in.models import Student, Log, Bathroom
 
 # class CreateLogForm(ModelForm):
 #     class Meta:
@@ -22,10 +22,12 @@ class CreateLogForm(forms.Form):
         if len(stu) < 6:
             raise ValidationError("must be 6 numbers")
         if (stu.isnumeric() == False):
-            raise ValidationError("Must be a valid student ID")
+            raise ValidationError("Student Id's don't contain letters")
 
         student = Student.objects.filter(student_id=stu)
-        print(student)
+        if len(student) < 1:
+            raise ValidationError("Must be a valid student ID")
+        
         return stu
 
 # def clean_student(self):

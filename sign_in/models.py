@@ -23,7 +23,7 @@ class Bathroom(models.Model):
 import pytz
 from datetime import datetime
 
-class Logs(models.Model):
+class Log(models.Model):
     Time_in = models.DateTimeField(auto_now=True)
     Time_out = models.DateTimeField(blank=True, null=True)
     student_id = models.ForeignKey(Student, on_delete=models.CASCADE)

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student, Bathroom, Logs
+from .models import Student, Bathroom, Log
 # Register your models here.
 
 admin.site.register(Student)
@@ -9,4 +9,4 @@ admin.site.register(Bathroom)
 class LogsAdmin(admin.ModelAdmin):
     readonly_fields = ("Time_in","Time_out")
 
-admin.site.register(Logs, LogsAdmin)
+admin.site.register(Log, LogsAdmin)

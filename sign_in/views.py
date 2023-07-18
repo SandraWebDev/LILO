@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import CreateLogForm
-from .models import Student, Logs, Bathroom
+from .models import Student, Log, Bathroom
 
 # Create your views here.
 
@@ -12,6 +12,13 @@ def student(request):
 
     if request.method == 'POST':
         form = CreateLogForm(request.POST)
+        student_id = form['student'].value()
+        student = Student.objects.filter(student_id=student_id)[0]
+        print(student)
+        log = Log(
+            student_id = student
+        )
+        log.save()
     #     print(form)
     #     # student_id = request.POST.get('student_id')
     #     # form.fields['student_id'].choices = [student_id, student_id]
