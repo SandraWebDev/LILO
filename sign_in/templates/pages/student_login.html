@@ -4,9 +4,11 @@
 {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
     <h1>Student login</h1>
-    <form>
-        <label> Enter ID</label>
-        <input />
+    <form action="" method="POST">
+        {% csrf_token %} 
+        {{ form }}
+        <!-- <label> Enter ID</label>
+        <input /> -->
         <input type = 'submit' value='Enter'/>
     </form>
 {% endblock %}
