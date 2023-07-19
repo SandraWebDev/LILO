@@ -30,6 +30,17 @@ class CreateLogForm(forms.Form):
         
         return stu
 
+#form to create choices of the bathrooms
+class ChooseBathroom(forms.Form):
+    bathroom_choices = (
+        ("testBR", "testBR"),
+        ("testBR1", "testBR1"),
+        ("testBR2", "testBR2"),
+    )
+    bathrooms = forms.ChoiceField(choices = bathroom_choices)
+
+
+
 # def clean_student(self):
 
 #         student_string = self.clean('student_id')
