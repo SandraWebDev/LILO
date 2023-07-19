@@ -44,8 +44,8 @@ def bathroom(request):
         form = ChooseBathroom(request.POST)
         bathroom = form['bathrooms'].value()
         print(bathroom)
-        Room = Bathroom(room = bathroom)
-        Room.save()
+        room = Bathroom(room = bathroom)
+        room.save()
         return home(request)
         
         
