@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 from .forms import CreateLogForm, ChooseBathroom
 from .models import Student, Log, Bathroom
 
@@ -7,17 +8,20 @@ from .models import Student, Log, Bathroom
 def home(request):
     return render(request, 'pages/home.html')
 
-def student(request):   
+def bathroom(request, pk):   
     form = CreateLogForm()
 
     if request.method == 'POST':
         form = CreateLogForm(request.POST)
         student_id = form['student'].value()
         student = Student.objects.filter(student_id=student_id)[0]
+        br = get_object_or_404(Bathroom, pk=pk)
+        
         print(student)
+        print(br)
         log = Log(
-            student_id = student
-            # bathroom = bathroom(request)
+            student_id = student,
+            bathroom = br
         )
         log.save()
     #     print(form)
@@ -37,15 +41,14 @@ def student(request):
 def logs(request):
     return render(request, 'pages/student_logs.html')
 
-def bathroom(request):
+def bathroom_selector(request):
     form = ChooseBathroom()
-    
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ChooseBathroom(request.POST)
         bathroom = form['bathrooms'].value()
         print(bathroom)
-        room = Bathroom(room = bathroom)
-        room.save()
+        Room = Bathroom(room = bathroom)
+        Room.save()
         return home(request)
         
         
