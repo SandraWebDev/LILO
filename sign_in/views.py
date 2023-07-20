@@ -9,7 +9,7 @@ def home(request):
     return render(request, 'pages/home.html')
 
 def bathroom(request, pk):   
-    form = CreateLogForm()
+    # form = CreateLogForm()
 
     if request.method == 'POST':
         form = CreateLogForm(request.POST)
@@ -33,7 +33,7 @@ def bathroom(request, pk):
     #         form.save() 
         # log = Logs(data['student_id'])
         #add to admin page
-    else:
+    # else:
         form = CreateLogForm()
 
     return render(request, 'pages/student_login.html', {'form': form})
