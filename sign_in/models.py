@@ -11,8 +11,6 @@ class Student(models.Model):
 
     def __str__(self):
          return f"{self.first_name} {self.last_name}, Id: {self.student_id}"
-    
-
 
 class Bathroom(models.Model):
     room = models.CharField(max_length=100)
@@ -30,6 +28,8 @@ class Log(models.Model):
     bathroom = models.ForeignKey(Bathroom, null=True, on_delete=models.SET_NULL)
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     
+    class Meta:
+        permissions = (("can_view_log_history", "can_edit_log_history"),)
 
     def __str__(self):  
          
