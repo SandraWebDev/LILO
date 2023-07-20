@@ -1,0 +1,22 @@
+.sidebar-nav {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+body{
+  background-color: #7776bc;
+}
+
+h1{
+  color:#2f2844;
+  text-align: center;
+}
+
+.a-tag {
+color: black;
+}
+
+.a-tag:hover {
+color: white;
+}
