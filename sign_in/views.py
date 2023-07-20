@@ -34,7 +34,7 @@ def bathroom(request, pk):
         # log = Logs(data['student_id'])
         #add to admin page
     # else:
-        form = CreateLogForm()
+    form = CreateLogForm()
 
     return render(request, 'pages/student_login.html', {'form': form})
 
@@ -49,7 +49,6 @@ def bathroom_selector(request):
         url = reverse('bathroom', args=(br_id))
         print(url)
         return redirect(reverse('bathroom', args=(br_id)))  
-        
         
     return render(request, 'pages/bathroom.html',{'form': form})
 
