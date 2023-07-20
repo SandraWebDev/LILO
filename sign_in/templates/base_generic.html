@@ -21,10 +21,22 @@
         <div class="col-sm-2">
           {% block sidebar %}
             <ul class="sidebar-nav">
-              <li><a href="{% url 'home' %}">Home</a></li>
-              <!-- <li><a href="#">Student login</a></li> -->
-              <!-- <li><a href="#">Log of student</a></li> -->
-              <li><a href="{% url 'bathroom_selector' %}">Select bathroom</a></li>
+              {% if user.is_authenticated %}
+                <br>
+                <li><strong>User:</strong> {{ user.get_username }}</li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'bathroom_selector' %}">Select bathroom</a></li>
+                <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
+              {% else %}
+                <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+              {% endif %}
+
+              {% if perms.sign_in.can_view_log_history %}
+                <br>
+                <li><Strong> Admin Options </Strong></li>
+                <li><a href="{% url 'bathroom_logs' %}">Log History</a></li>
+              {% endif %}
+
             </ul>
           {% endblock %}
         </div>
