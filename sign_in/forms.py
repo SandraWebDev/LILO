@@ -32,11 +32,13 @@ class CreateLogForm(forms.Form):
 
 #form to create choices of the bathrooms
 class ChooseBathroom(forms.Form):
-    bathroom_choices = (
-        ("testBR", "testBR"),
-        ("testBR1", "testBR1"),
-        ("testBR2", "testBR2"),
-    )
+    bathrooms = Bathroom.objects.all()
+    b_options = []
+    for b in bathrooms:
+        b_options.append( (b.id, b.room) )
+
+    bathroom_choices = tuple(b_options)
+
     bathrooms = forms.ChoiceField(choices = bathroom_choices)
 
 
