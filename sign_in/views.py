@@ -16,9 +16,7 @@ def bathroom(request, pk):
         student_id = form['student'].value()
         student = Student.objects.filter(student_id=student_id)[0]
         br = get_object_or_404(Bathroom, pk=pk)
-        
-        print(student)
-        print(br)
+
         log = Log(
             student_id = student,
             bathroom = br
@@ -32,7 +30,7 @@ def bathroom(request, pk):
 @permission_required('sign_in.can_view_log_history')
 @login_required
 def logs(request):
-    return render(request, 'pages/student_logs.html')
+    return render(request, 'pages/student_logs.html', {'logs': Log.objects.all()})
 
 @login_required
 def bathroom_selector(request):
