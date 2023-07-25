@@ -19,7 +19,7 @@ class Bathroom(models.Model):
          return f"{self.room}"
     
 import pytz
-from datetime import datetime
+from datetime import datetime, timezone
 
 class Log(models.Model):
     Time_in = models.DateTimeField(auto_now=True)
@@ -32,14 +32,6 @@ class Log(models.Model):
         permissions = (("can_view_log_history", "can_edit_log_history"),)
 
     def __str__(self):  
-         
-            eastern_tz = pytz.timezone('US/Eastern')
-            self.Time_in = self.Time_in.astimezone(eastern_tz)
+            self.Time_in = datetime.now()
            
-            formatted_in = self.Time_in.strftime("%m/%d/%y %I:%M:%S")
-            if(self.Time_out is not None):
-                self.Time_out = self.Time_out.astimezone(eastern_tz)    
-                formatted_out = self.Time_out.strftime("%m/%d/%y %I:%M:%S")
-            else:
-                 formatted_out = None
-            return f"Teacher: {self.user}, Bathroom: {self.bathroom}, Student: {self.student_id}, Time_in: {formatted_in}, Time_out: {formatted_out} "
+            return f"Teacher: {self.user}, Bathroom: {self.bathroom}, Student: {self.student_id}, Time_in: {self.Time_in}, Time_out: x{self.Time_out} "
