@@ -8,5 +8,6 @@ admin.site.register(Bathroom)
 
 class LogsAdmin(admin.ModelAdmin):
     readonly_fields = ("Time_in","Time_out")
+    list_filter = ('Time_in', 'Time_out', "student_id", "bathroom")
 
 admin.site.register(Log, LogsAdmin)

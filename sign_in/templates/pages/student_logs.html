@@ -5,4 +5,13 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
     <h1>Student logs</h1>
 
+    {% for log in logs %}
+    <div>
+        <ul> <p>{{ log.student_id }}</p> 
+        <p>Time In: {{ log.Time_in }}</p> 
+        <p>Time Out: {{ log.Time_out }}</p> </ul>
+    </div>
+
+    <hr>
+    {% endfor %}
 {% endblock %}
