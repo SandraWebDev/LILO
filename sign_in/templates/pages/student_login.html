@@ -4,9 +4,24 @@
 {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
     <h1>Student login</h1>
-    <form action="" method="POST" autocomplete="off">
+    <form action="" method="POST">
         {% csrf_token %} 
         {{ form }}
-        <input type = 'submit' value='Enter'/>
+        <input type = 'submit' name='action' value='Enter'/>
     </form>
+    
+    {% for log in logs %}
+    <div id = 'bathroomLog'>
+    <ul> <p>{{ log.student_id }}</p> 
+    <p>Time In: {{ log.Time_in }}</p> 
+    <form id = 'form' action="" method="POST">
+        {% csrf_token %}
+        <button id = 'logOut' name = 'action' value = '{{ log.id }}' >
+            Log Out
+        </button>
+    </form>
+
+    <hr>
+    </div>
+    {% endfor %}
 {% endblock %}
