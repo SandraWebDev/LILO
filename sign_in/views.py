@@ -38,9 +38,9 @@ def bathroom_selector(request):
     if request.method == "POST":
         form = ChooseBathroom(request.POST)
         br_id = form['bathrooms'].value()
-        url = reverse('bathroom', args=(br_id))
+        url = reverse('bathroom', args=([br_id]))
         print(url)
-        return redirect(reverse('bathroom', args=(br_id)))  
+        return redirect(reverse('bathroom', args=([br_id])))  
         
     return render(request, 'pages/bathroom.html',{'form': form})
 
