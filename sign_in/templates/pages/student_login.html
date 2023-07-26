@@ -12,16 +12,16 @@
     <br>
     <hr>
     {% for log in logs %}
-    <div id = 'bathroomLog'>
-    <ul> <p>{{ log.student_id }}</p> 
-    <p>Time In: {{ log.Time_in }}</p> 
-    <form id = 'form' action="" method="POST">
-        {% csrf_token %}
-        <button id = 'logOut' name = 'action' value = '{{ log.id }}' >
-            Log Out
-        </button>
-    </form>
-    <hr>
-    </div>
+        <div id = 'bathroomLog'>
+        <ul> <p>{{ log.student_id }}</p> 
+        <p>Time In: {{ log.Time_in }}</p> 
+        <form id = 'form' action="" method="POST">
+            {% csrf_token %}
+            <button id = 'logOut' name = 'action' value = '{{ log.id }}' >
+                Log Out
+            </button>
+        </form>
+        <hr>
+        </div>
     {% endfor %}
 {% endblock %}
