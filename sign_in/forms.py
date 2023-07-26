@@ -12,23 +12,25 @@ from sign_in.models import Student, Log, Bathroom
 from django.core.exceptions import ValidationError
 
 class CreateLogForm(forms.Form):
-
-    student = forms.CharField(
-        max_length=6,
-    )
+    student = forms.CharField(max_length=6)
 
     def clean_student(self):
-        stu = self.cleaned_data["student"]
-        if len(stu) < 6:
-            raise ValidationError("must be 6 numbers")
-        if (stu.isnumeric() == False):
-            raise ValidationError("Student Id's don't contain letters")
+        input_id = self.cleaned_data["student"]
+        id_length = len(input_id)
+        validate = ''
+        if id_length != 6:
+            validate += "must be 6 numbers /b"
+            
+        if not input_id.isnumeric():
+            validate += "Student Id's don't contain letters /b"
+            
+        if len(Student.objects.filter(student_id=input_id)) <= 0:
+            validate += "Must be a valid student ID"
+            
+        if (validate != ''):
+            raise ValidationError(validate.split("/b"))
 
-        student = Student.objects.filter(student_id=stu)
-        if len(student) < 1:
-            raise ValidationError("Must be a valid student ID")
-        
-        return stu
+        return input_id
 
 #form to create choices of the bathrooms
 class ChooseBathroom(forms.Form):

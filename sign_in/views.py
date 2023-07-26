@@ -12,24 +12,29 @@ def home(request):
 
 @login_required
 def bathroom(request, pk):   
+    form = CreateLogForm()
+    br = get_object_or_404(Bathroom, pk=pk)
+    logs = Log.objects.filter(bathroom = br, Time_out = None)
+
     if request.method == 'POST':
         if request.POST['action'] == 'Enter':
             form = CreateLogForm(request.POST)
-            student_id = form['student'].value()
-            student = Student.objects.filter(student_id=student_id)[0]
-            br = get_object_or_404(Bathroom, pk=pk)
-            log = Log(
-                student_id = student,
-                bathroom = br
-            )
-            log.save()
+            if form.is_valid():
+                student_id = form.cleaned_data['student']
+                student = Student.objects.filter(student_id=student_id)[0]
+
+                log = Log(
+                    student_id = student,
+                    bathroom = br
+                )
+                log.save()
+                form = CreateLogForm()
         else:
             studentId = request.POST['action']
-            Log.objects.filter(id = studentId).update(Time_out = datetime.datetime.now())
+            logs.update(Time_out = datetime.datetime.now())
 
-    form = CreateLogForm()
-    br = get_object_or_404(Bathroom, pk=pk)
-    return render(request, 'pages/student_login.html', {'form': form, 'logs':Log.objects.all().filter(Time_out = None).filter(bathroom = br)})
+
+    return render(request, 'pages/student_login.html', {'form': form, 'logs':logs, "room": br.room})
 
 @permission_required('sign_in.can_view_log_history')
 @login_required
