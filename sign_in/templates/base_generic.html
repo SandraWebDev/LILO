@@ -24,7 +24,6 @@
               {% if user.is_authenticated %}
                 <br>
                 <li><strong>User:</strong> {{ user.get_username }}</li>
-                <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'bathroom_selector' %}">Select bathroom</a></li>
                 <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
               {% else %}

@@ -5,16 +5,14 @@ from .models import Student, Log, Bathroom
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 import datetime
+import string
 
-@login_required
-def home(request):
-    return render(request, 'pages/home.html')
 
 @login_required
 def bathroom(request, pk):   
     form = CreateLogForm()
     br = get_object_or_404(Bathroom, pk=pk)
-    logs = Log.objects.filter(bathroom = br, Time_out = None)
+    logs = Log.objects.filter(Time_out = None)
 
     if request.method == 'POST':
         if request.POST['action'] == 'Enter':
@@ -30,11 +28,13 @@ def bathroom(request, pk):
                 log.save()
                 form = CreateLogForm()
         else:
-            studentId = request.POST['action']
-            logs.update(Time_out = datetime.datetime.now())
+            log_to_modify = get_object_or_404(Log, pk = request.POST['action'])        
+            student_logout_id = log_to_modify.student_id.student_id
+
+            logs.filter(student_id = Student.objects.filter(student_id = student_logout_id)[0]).update(Time_out = datetime.datetime.now())
 
 
-    return render(request, 'pages/student_login.html', {'form': form, 'logs':logs, "room": br.room})
+    return render(request, 'pages/student_login.html', {'form': form, 'logs':logs.filter(bathroom = br), "room": br.room})
 
 @permission_required('sign_in.can_view_log_history')
 @login_required
