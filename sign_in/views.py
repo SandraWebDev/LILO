@@ -36,10 +36,6 @@ def bathroom(request, pk):
 
     return render(request, 'pages/student_login.html', {'form': form, 'logs':logs.filter(bathroom = br), "room": br.room})
 
-@permission_required('sign_in.can_view_log_history')
-@login_required
-def logs(request):
-    return render(request, 'pages/student_logs.html', {'logs': Log.objects.all()})
 
 @login_required
 def bathroom_selector(request):

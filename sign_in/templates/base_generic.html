@@ -30,12 +30,6 @@
                 <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
               {% endif %}
 
-              {% if perms.sign_in.can_view_log_history %}
-                <br>
-                <li><Strong> Admin Options </Strong></li>
-                <li><a href="{% url 'bathroom_logs' %}">Log History</a></li>
-              {% endif %}
-
             </ul>
           {% endblock %}
         </div>
