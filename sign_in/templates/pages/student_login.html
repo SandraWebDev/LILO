@@ -4,16 +4,16 @@
 {% load static %}
 <div class = "student-input-page">
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
-    <h1>{{ room }}</h1>
     <div class = "student-button">
+        <h1>{{ room }}</h1>
         <form action="" method="POST" autocomplete="off">
             {% csrf_token %} 
             {{ form }}
-            <input type = 'submit' name='action' value='Enter'/>
+            <input type = 'hidden' name='action' value='Enter'/>
         </form>
     </div>
     <hr>
-    <div class = "student-logs"></div>
+    <div class = "student-logs">
         {% for log in logs %}
             <div id = 'bathroomLog'>
                 <ul> <p>{{ log.student_id }}</p> 

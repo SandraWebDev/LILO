@@ -5,37 +5,44 @@
 }
 
 body{
-  background-color: #38376c;
+  background-color: rgb(213, 195, 221);
   color: white;
 }
 
 .student-input-page {
-  margin: 20px;
-  padding: 20px;
-  background-image: url("bg_1.1.png");
+  display: flex;
+  height: max-content;
 }
 
 .student-logs {
-  display: flex;
   flex-wrap: wrap;
+  height: 1000px;
+  flex: grid;
+  width: 80%;
 }
 
 .student-button {
-  margin: 100px;
-  display: flex;
-  justify-content: center;
+  background-color: #6F42C1;
+  flex-direction: column;
+  width: 30%;
 }
 
 #bathroomLog {
-  margin: 5px;
+  margin: 25px;
   padding: 10px;
+  border-radius: 10%;
+  background-color: #6e42c19f;
+  display: grid;
+  height: 20%;
+  justify-content: center;
+}
+
+#bathroomLog:hover {
+  background-color: solid 8278a2;
+}
+
+#logOut {
   border-radius: 5%;
-  border: 1px solid #8278a2;
-
-  height: 400px;
-  width: 350px;
-
-  display: inline-block;
 }
 
 h1{
