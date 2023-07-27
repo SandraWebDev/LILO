@@ -5,16 +5,46 @@
 }
 
 body{
-  background-color: #7776bc;
+  background-color: #38376c;
+  color: white;
+}
+
+.student-input-page {
+  margin: 20px;
+  padding: 20px;
+  background-image: url("bg_1.1.png");
+}
+
+.student-logs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.student-button {
+  margin: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+#bathroomLog {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 5%;
+  border: 1px solid #8278a2;
+
+  height: 400px;
+  width: 350px;
+
+  display: inline-block;
 }
 
 h1{
-  color:#2f2844;
+  color:#8278a2;
   text-align: center;
 }
 
 .a-tag {
-color: black;
+color: rgb(70, 70, 70);
 }
 
 .a-tag:hover {
