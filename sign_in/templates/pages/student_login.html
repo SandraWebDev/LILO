@@ -5,7 +5,6 @@
 <div class = "student-input-page">
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
     <div class = "student-button">
-        <h1>{{ room }}</h1>
         <form action="" method="POST" autocomplete="off">
             {% csrf_token %} 
             {{ form }}
@@ -14,25 +13,33 @@
     </div>
     <hr>
     <div class = "student-logs">
-        {% for log in logs %}
-            <div id = 'bathroomLog' class = 'bathroomLog'>
-                <ul class = 'list'> 
-                    <p>{{ log.student_id }}</p> 
-                    <p>Time In: {{ log.Time_in|date:"h:i A" }}</p>
-                    <div class ="timer-display"> 00 : 00 : 00 : 000 </div>
-                </ul> 
+        {% if logs %}
+            <h1> {{ room }} </h1>
 
-                <div class = "start-time" hidden>{{ log.Time_in.isoformat }}</div>
+            {% for log in logs %}
+                <div class = 'bathroom-log'>
+                    <ul> 
+                        <p>{{ log.student_id }}</p> 
+                        <p>Time In: {{ log.Time_in|date:"h:i A" }}</p>
+                        <div class ="timer-display"> 00 : 00 : 00 : 000 </div>
+                    </ul> 
 
-                <form id = 'form' action="" method="POST">
-                    {% csrf_token %}
-                    <button id = 'logOut' name = 'action' value = '{{ log.id }}' >
-                        Log Out
-                    </button>
-                </form>
-            </div>
-        {% endfor %}
+                    <div class = "start-time" hidden>{{ log.Time_in.isoformat }}</div>
+
+                    <form id = 'form' action="" method="POST">
+                        {% csrf_token %}
+                        <button id = 'logOut' name = 'action' value = '{{ log.id }}' >
+                            Log Out
+                        </button>
+                    </form>
+                </div>
+            {% endfor %}
+
+        {% else %}
+            <p style = "margin: 10px;"> No logs to display for {{ room }}</p>
+        {% endif %}
     </div>
+    
     <script>  
         timeRefs = document.querySelectorAll(".timer-display");
         startTimes = document.querySelectorAll(".start-time");
