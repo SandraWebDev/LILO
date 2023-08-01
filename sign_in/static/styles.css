@@ -1,89 +1,54 @@
+body  {
+  background-color: #404069;
+  color: white;
+  overflow-y: scroll;
+}
+
 .sidebar-nav {
   margin-top: 20px;
   padding: 0;
   list-style: none;
 }
 
-body{
-  background-color: #E6CCF5;
-  color: white;
-  overflow-y: hidden;
-}
-
 .student-input-page {
   display: flex;
-  height: max-content;
+  height: 100%;
 }
 
 .student-logs {
   flex-wrap: wrap;
   min-height: 1000px;
   height: auto;
-  width: 80%;
-  background-image: url('bg_1.jpg');
+  width: auto;
+}
+
+.bathroom-log {
+  display: block;
+  margin: 5px;
+  background-color: #2b2a4e;
+  opacity: 0.7;
+  width: 300px;
+}
+
+.bathroom-log {
+  display: block;
+  background-color: #2b2a4e;
+  opacity: 0.7;
 }
 
 .student-button {
-  background-color: #6F42C1;
+  display: flex;
+  background-color: #4a497a;
   flex-direction: column;
   width: 30%;
-  box-shadow: inset 20px 0px #A763D7;
+  box-shadow: inset 20px 0px #343457;
+  justify-content: flex-start;
+  align-items: center;
 
+  padding: 50px 0px 0px 0px;
 }
 
-
-#bathroomLog {
-  display: flex;
-  margin: 25px;
-  padding: 10px;
-  border-radius: 10%;
-  background-color: #e6ccf5b0;
-  height: 13%;
-  text-align: left;
-}
-
-#form {
-  display: flex;
-  width: 70%;
-}
-
-#logOut {
-  height: 100%;
-  width: 100%;
-  background-color: transparent;
-  border: transparent;
-}
-
-#bathromLog:has(#logOut:hover){
-  background-color: #6e42c15e;
-}
-
-
-
-.list {
-  width: auto; 
-}
-
-
-h1{
-  color:#8278a2;
+h1 {
+  color:#799ac2;
   text-align: center;
-}
-
-.a-tag {
-color: rgb(70, 70, 70);
-}
-
-.a-tag:hover {
-color: white;
-}
-
-.col-sm-2 {
-  box-shadow: 15px 0px #dcb6ff;
-  background-size: auto;
-  background-repeat: no-repeat;
-}
-
-.container {
-  padding-right: none;
 }
