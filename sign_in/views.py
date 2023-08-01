@@ -17,16 +17,24 @@ def bathroom(request, pk):
     if request.method == 'POST':
         if request.POST['action'] == 'Enter':
             form = CreateLogForm(request.POST)
-            if form.is_valid():
-                student_id = form.cleaned_data['student']
-                student = Student.objects.filter(student_id=student_id)[0]
+            if len(logs.filter(bathroom = br)) < 4:
+                if form.is_valid():
+                    student_id = form.cleaned_data['student']
+                    student = Student.objects.filter(student_id=student_id)[0]
 
-                log = Log(
-                    student_id = student,
-                    bathroom = br
-                )
-                log.save()
-                form = CreateLogForm()
+                    # for i in logs.filter(student_id = student):
+                    #     i.Time_out = datetime.datetime.now()
+                    #     i.save()
+
+                    log = Log(
+                        student_id = student,
+                        bathroom = br
+                    )
+                    log.save()
+                    form = CreateLogForm()
+            else:
+                None
+                # This should send a popup to the login page that say something like you have "4 students logged in already" but Im tired :(
         else:
             log_to_modify = get_object_or_404(Log, pk = request.POST['action'])        
             student_logout_id = log_to_modify.student_id.student_id
