@@ -5,38 +5,65 @@
 }
 
 body{
-  background-color: #38376c;
+  background-color: #E6CCF5;
   color: white;
+  overflow-y: hidden;
 }
 
 .student-input-page {
-  margin: 20px;
-  padding: 20px;
-  background-image: url("bg_1.1.png");
+  display: flex;
+  height: max-content;
 }
 
 .student-logs {
-  display: flex;
   flex-wrap: wrap;
+  min-height: 1000px;
+  height: auto;
+  width: 80%;
+  background-image: url('bg_1.jpg');
 }
 
 .student-button {
-  margin: 100px;
-  display: flex;
-  justify-content: center;
+  background-color: #6F42C1;
+  flex-direction: column;
+  width: 30%;
+  box-shadow: inset 20px 0px #A763D7;
+
 }
+
 
 #bathroomLog {
-  margin: 5px;
+  display: flex;
+  margin: 25px;
   padding: 10px;
-  border-radius: 5%;
-  border: 1px solid #8278a2;
-
-  height: 400px;
-  width: 350px;
-
-  display: inline-block;
+  border-radius: 10%;
+  background-color: #e6ccf5b0;
+  height: 13%;
+  text-align: left;
 }
+
+#form {
+  display: flex;
+  width: 70%;
+}
+
+#logOut {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+  border: transparent;
+}
+
+#bathromLog:has(#logOut:hover){
+  background-color: #6e42c15e;
+}
+
+
+
+.list {
+  width: auto; 
+}
+
 
 h1{
   color:#8278a2;
@@ -49,4 +76,14 @@ color: rgb(70, 70, 70);
 
 .a-tag:hover {
 color: white;
+}
+
+.col-sm-2 {
+  box-shadow: 15px 0px #dcb6ff;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+.container {
+  padding-right: none;
 }
