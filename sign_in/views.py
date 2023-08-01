@@ -22,9 +22,9 @@ def bathroom(request, pk):
                     student_id = form.cleaned_data['student']
                     student = Student.objects.filter(student_id=student_id)[0]
 
-                    # for i in logs.filter(student_id = student):
-                    #     i.Time_out = datetime.datetime.now()
-                    #     i.save()
+                    for i in logs.filter(student_id = student):
+                        i.Time_out = datetime.datetime.now()
+                        i.save()
 
                     log = Log(
                         student_id = student,
