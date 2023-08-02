@@ -14,6 +14,8 @@ class Student(models.Model):
 
 class Bathroom(models.Model):
     room = models.CharField(max_length=100)
+    color = models.CharField(max_length=7, default='')
+    max_people_allowed = models.PositiveIntegerField(default = 2)
 
     def __str__(self):
          return f"{self.room}"

@@ -1,13 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from sign_in.models import Student, Log, Bathroom
-
-# class CreateLogForm(ModelForm):
-#     class Meta:
-#         model = Logs
-#         fields = ["student_id"]
-#         widgets = {"student_id": forms.TextInput(attrs={'rows':1, 'cols': 20})}
-# # , "bathroom", "user"
+from django.forms.widgets import TextInput
 
 from django.core.exceptions import ValidationError
 
@@ -43,21 +37,10 @@ class ChooseBathroom(forms.Form):
 
     bathrooms = forms.ChoiceField(choices = bathroom_choices)
 
-
-
-# def clean_student(self):
-
-#         student_string = self.clean('student_id')
-
-#         try:
-#             student = Student.objects.get(id=student_string)
-#         except Student.DoesNotExist:
-#             raise forms.ValidationError("id does not exist.")
-
-#         return student
-
-
-# def clean_student_id(self):
-#     data = self.cleaned_data['id']
-
-   
+class BathroomForm(ModelForm):
+    class Meta:
+        model = Bathroom
+        fields = '__all__'
+        widgets = {
+            'color': TextInput(attrs={'type': 'color'}),
+        }
