@@ -44,3 +44,4 @@ class BathroomForm(ModelForm):
         widgets = {
             'color': TextInput(attrs={'type': 'color'}),
         }
+

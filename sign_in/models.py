@@ -37,3 +37,16 @@ class Log(models.Model):
             self.Time_in = datetime.now()
            
             return f"Teacher: {self.user}, Bathroom: {self.bathroom}, Student: {self.student_id}, Time_in: {self.Time_in}, Time_out: x{self.Time_out} "
+    
+class building(models.Model):
+    building = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f"{self.building}"
+
+class Profile(models.Model):
+    bathroom = models.ForeignKey(Bathroom, null=True, on_delete=models.SET_NULL)
+    user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return f"{self.user}, {self.bathroom},"
