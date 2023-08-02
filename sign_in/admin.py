@@ -5,8 +5,6 @@ from import_export import resources
 from import_export.fields import Field
 
 admin.site.register(Student)
-admin.site.register(Bathroom)
-
 
 class LogAdminResource(resources.ModelResource):
     student_id = Field(attribute = "student_id")
@@ -25,3 +23,9 @@ class LogsImportExportAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('student_id', 'bathroom', 'Time_in', 'Time_out')
 
 admin.site.register(Log, LogsImportExportAdmin)
+
+from .forms import BathroomForm
+
+@admin.register(Bathroom)
+class BathroomAdmin(admin.ModelAdmin):
+    form = BathroomForm
